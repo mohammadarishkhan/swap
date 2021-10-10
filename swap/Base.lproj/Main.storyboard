@@ -229,26 +229,43 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfE-0E-FLb" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-iB-8MT" userLabel="AddPhotosView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-iB-8MT" userLabel="Photos Container View">
                                                 <rect key="frame" x="20" y="30" width="350" height="130"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageFolder" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-VG-62T">
-                                                        <rect key="frame" x="155" y="31.666666666666668" width="40" height="46.666666666666657"/>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T65-OA-Mjo">
-                                                        <rect key="frame" x="130.66666666666666" y="83.333333333333329" width="89" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2L-TX-tWL" userLabel="AddPhotosView">
+                                                        <rect key="frame" x="125" y="15" width="100" height="100"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageFolder" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-VG-62T">
+                                                                <rect key="frame" x="30" y="13.666666666666668" width="40" height="46.666666666666657"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T65-OA-Mjo">
+                                                                <rect key="frame" x="5.6666666666666572" y="65.333333333333329" width="89" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="Kux-lP-f9j"/>
+                                                            <constraint firstItem="T65-OA-Mjo" firstAttribute="centerX" secondItem="C2L-TX-tWL" secondAttribute="centerX" id="VcR-Nx-0zW"/>
+                                                            <constraint firstAttribute="width" constant="100" id="aEv-BE-8qe"/>
+                                                            <constraint firstItem="T65-OA-Mjo" firstAttribute="top" secondItem="lBe-VG-62T" secondAttribute="bottom" constant="5" id="kTg-G4-MWD"/>
+                                                            <constraint firstItem="lBe-VG-62T" firstAttribute="centerY" secondItem="C2L-TX-tWL" secondAttribute="centerY" constant="-13" id="oqN-mw-Ibb"/>
+                                                            <constraint firstItem="lBe-VG-62T" firstAttribute="centerX" secondItem="C2L-TX-tWL" secondAttribute="centerX" id="xei-zi-7R4"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="xLM-Mp-y4Y" appends="YES" id="tQ5-zE-mST"/>
+                                                        </connections>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstItem="lBe-VG-62T" firstAttribute="centerY" secondItem="wbc-iB-8MT" secondAttribute="centerY" constant="-10" id="Ft4-sr-ABG"/>
+                                                    <constraint firstItem="C2L-TX-tWL" firstAttribute="centerY" secondItem="wbc-iB-8MT" secondAttribute="centerY" id="QDT-3e-ebs"/>
                                                     <constraint firstAttribute="height" constant="130" id="ex3-bF-5I0"/>
-                                                    <constraint firstItem="T65-OA-Mjo" firstAttribute="centerX" secondItem="wbc-iB-8MT" secondAttribute="centerX" id="h8d-fU-jDX"/>
-                                                    <constraint firstItem="lBe-VG-62T" firstAttribute="centerX" secondItem="wbc-iB-8MT" secondAttribute="centerX" id="kxq-YE-O4F"/>
-                                                    <constraint firstItem="T65-OA-Mjo" firstAttribute="top" secondItem="lBe-VG-62T" secondAttribute="bottom" constant="5" id="q1d-CZ-Jz2"/>
+                                                    <constraint firstItem="C2L-TX-tWL" firstAttribute="centerX" secondItem="wbc-iB-8MT" secondAttribute="centerX" id="saU-4q-K9c"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -285,7 +302,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos : 0/3 *Add a photo to continiue." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytA-AX-bIq">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos : 0/3. Add a photo to continiue." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytA-AX-bIq">
                                                         <rect key="frame" x="20" y="10" width="350" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -447,11 +464,19 @@
                     <connections>
                         <outlet property="categoryButton" destination="S6V-II-QMm" id="fNb-hy-e8W"/>
                         <outlet property="descriptionTextView" destination="amz-N4-3rW" id="emX-gy-Dv1"/>
+                        <outlet property="imageFolderView" destination="C2L-TX-tWL" id="aaM-10-4d0"/>
+                        <outlet property="photosCountLabel" destination="ytA-AX-bIq" id="die-Fx-TxS"/>
                         <outlet property="priceTextField" destination="b2V-4b-Hu2" id="NKl-w0-MZC"/>
                         <outlet property="titleTextField" destination="urB-EA-pF9" id="7Lr-Zm-Wh2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAa-Ck-ryv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xLM-Mp-y4Y">
+                    <connections>
+                        <action selector="addPhotosTapped:" destination="A4b-zX-656" id="QWY-4J-C4x"/>
+                        <outlet property="delegate" destination="A4b-zX-656" id="DSm-rz-YFV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2389.8550724637685" y="26.785714285714285"/>
         </scene>

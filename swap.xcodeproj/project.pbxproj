@@ -20,6 +20,7 @@
 		82748EDA26FDF52E0032CFFC /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82748ED926FDF52E0032CFFC /* LoginModel.swift */; };
 		8278F6F72708AC1A005B24F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278F6F62708AC1A005B24F6 /* HomeViewController.swift */; };
 		827FD4D9270CB5C800A9CE0E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */; };
+		82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AFF82427130CE4007189B8 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		82748ED926FDF52E0032CFFC /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8278F6F62708AC1A005B24F6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		82AFF82427130CE4007189B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */,
+				82AFF82427130CE4007189B8 /* ImagePicker.swift */,
 			);
 			path = Uitilities;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				8278F6F72708AC1A005B24F6 /* HomeViewController.swift in Sources */,
 				82748EC926FDECE40032CFFC /* SignupViewController.swift in Sources */,
 				822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */,
+				82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */,
 				825414FC26FB49AA00D19311 /* SceneDelegate.swift in Sources */,
 				82748ED726FDF4FC0032CFFC /* LoginViewController.swift in Sources */,
 				82472FF027033F9700CB8167 /* AuthenticationModel.swift in Sources */,

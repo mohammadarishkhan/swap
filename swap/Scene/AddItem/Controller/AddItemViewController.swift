@@ -11,10 +11,16 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var photosCountLabel: UILabel!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var imageFolderView: UIView!
+    
+    var photosStored: [UIImage] = [UIImage]()
+    var imagePicker: ImagePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     //MARK: - Validation
@@ -28,6 +34,9 @@ class AddItemViewController: UIViewController {
             return false
         } else if categoryButton.title(for: UIControl.State.normal) == "Category" {
             showAlert("Select Category to continiue")
+            return false
+        } else if photosStored.count == 0 {
+            showAlert("Add photo to continue")
             return false
         }
         
@@ -80,8 +89,16 @@ class AddItemViewController: UIViewController {
         
         self.present(vc, animated: true, completion: nil)
     }
-   
-
+    
+    @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {
+        
+        guard photosStored.count != 3 else {
+            showAlert("Maximum 3 images are allowed")
+            return
+        }
+        
+        self.imagePicker.present(from: imageFolderView)
+    }
 }
 
 extension AddItemViewController: UITextViewDelegate {
@@ -91,5 +108,16 @@ extension AddItemViewController: UITextViewDelegate {
             descriptionTextView.textColor = .black
         }
         return true
+    }
+}
+
+extension AddItemViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let image = image {
+            photosStored.append(image)
+            photosCountLabel.text = "Photos: \(photosStored.count)/3. Add a photo to continiue."
+            
+            
+        }
     }
 }
