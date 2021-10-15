@@ -86,6 +86,8 @@ class SignupViewController: UIViewController {
                 let userModel = UserModel(name: name, authentication: authenticationModel)
                 
                 userModel.writeUser()
+                authenticationModel.didAuthSuccessful()
+                
                 if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier") {
                     self.navigationController?.viewControllers = [homeViewController]
                 }

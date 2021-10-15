@@ -58,8 +58,11 @@ class LoginViewController: UIViewController {
     
     // MARK: - action
     @IBAction func LoginButtonAction() {
-        if  isloginValid() && isUserExist() {
-            debugPrint("valid")
+        if isloginValid() && isUserExist() {
+            if let email = yourEmailTextField.text {
+                let authenticationModel = AuthenticationModel(email: email, password: "")
+                authenticationModel.didAuthSuccessful()
+            }
             if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier") {
                 self.navigationController?.viewControllers = [homeViewController]
             }

@@ -11,3 +11,16 @@ struct AuthenticationModel: Codable {
     let email: String
     let password: String
 }
+
+extension AuthenticationModel {
+    static var loggedInUserEmail: String? {
+        UserDefaults.standard.string(forKey: "loginUserKey")
+    }
+    
+    static var isAlreadyLogin: Bool {
+        return loggedInUserEmail != nil
+    }
+    func didAuthSuccessful() {
+        UserDefaults.standard.set(email, forKey: "loginUserKey")
+    }
+}
