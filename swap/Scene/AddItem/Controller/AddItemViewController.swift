@@ -43,8 +43,8 @@ class AddItemViewController: UIViewController {
         return true
     }
     
-    private func showAlert(_ message: String) {
-        let vc = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    private func showAlert(title: String? = "Error", _ message: String) {
+        let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         vc.addAction(action)
         self.present(vc, animated: true, completion: nil)
@@ -54,8 +54,14 @@ class AddItemViewController: UIViewController {
     
     @IBAction private func publishButtonAction() {
         if performValidation() {
-            debugPrint("SUCCESSFULLY PUBLISHED")
-            
+            if let title: String = titleTextField.text, let price = priceTextField.text, let priceValue = Int(price), let description = descriptionTextView.text, let category = categoryButton.title(for: .normal) {
+                
+                let itemModel = AddItemModel(title: title, price: priceValue, category: category, description: description, email: "")
+                                
+                itemModel.writeItem()
+                self.navigationController?.popViewController(animated: false)
+                showAlert(title: nil, "Successfully Published!")
+            }
         }
     }
     

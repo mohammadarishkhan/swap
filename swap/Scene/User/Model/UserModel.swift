@@ -10,7 +10,6 @@ import Foundation
 struct UserModel: Codable {
     let name: String
     let authentication: AuthenticationModel
-    
 }
 
 extension UserModel {
@@ -26,7 +25,7 @@ extension UserModel {
                 return users
 
             } catch {
-                debugPrint("Unable to Decode Notes (\(error))")
+                debugPrint("Unable to Decode UserModel (\(error))")
             }
         }
         
@@ -48,7 +47,7 @@ extension UserModel {
             UserDefaults.standard.set(data, forKey: "usersKey")
 
         } catch {
-            debugPrint("Unable to Encode Array of Notes (\(error))")
+            debugPrint("Unable to Encode Array of UserModel (\(error))")
         }
     }
 }

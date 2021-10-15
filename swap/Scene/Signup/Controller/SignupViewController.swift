@@ -41,7 +41,7 @@ class SignupViewController: UIViewController {
             return false
         }
         return true
-      
+        
     }
     
     func showAlert(_ message: String) {
@@ -73,7 +73,6 @@ class SignupViewController: UIViewController {
         
         return false
     }
-   
     
     //MARK: - Actions
     
@@ -94,7 +93,4 @@ class SignupViewController: UIViewController {
             }
         }
     }
-    
-    
-    
 }

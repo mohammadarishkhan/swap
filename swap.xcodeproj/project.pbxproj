@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		725E8E412719B8D80048698A /* AddItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725E8E402719B8D80048698A /* AddItemModel.swift */; };
 		822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822FEDC5270B60D900160314 /* AddItemViewController.swift */; };
 		82472FED27033F1300CB8167 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82472FEC27033F1300CB8167 /* UserModel.swift */; };
 		82472FF027033F9700CB8167 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82472FEF27033F9700CB8167 /* AuthenticationModel.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		725E8E402719B8D80048698A /* AddItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemModel.swift; sourceTree = "<group>"; };
 		822FEDC5270B60D900160314 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		82472FEC27033F1300CB8167 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		82472FEF27033F9700CB8167 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
@@ -53,9 +55,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		725E8E3F2719B8A50048698A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				725E8E402719B8D80048698A /* AddItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		822FEDC3270B607300160314 /* AddItem */ = {
 			isa = PBXGroup;
 			children = (
+				725E8E3F2719B8A50048698A /* Model */,
 				822FEDC4270B609200160314 /* Controller */,
 			);
 			path = AddItem;
@@ -142,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				82748EC426FDEB320032CFFC /* Controller */,
-				82748EC326FDEB2A0032CFFC /* Model */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -153,13 +163,6 @@
 				8278F6F52708ABF9005B24F6 /* Controller */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		82748EC326FDEB2A0032CFFC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		82748EC426FDEB320032CFFC /* Controller */ = {
@@ -283,6 +286,7 @@
 				82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */,
 				825414FC26FB49AA00D19311 /* SceneDelegate.swift in Sources */,
 				82748ED726FDF4FC0032CFFC /* LoginViewController.swift in Sources */,
+				725E8E412719B8D80048698A /* AddItemModel.swift in Sources */,
 				82472FF027033F9700CB8167 /* AuthenticationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
