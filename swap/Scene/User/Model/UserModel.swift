@@ -9,6 +9,7 @@ import Foundation
 
 struct UserModel: Codable {
     let name: String
+    let phone: Int
     let authentication: AuthenticationModel
 }
 

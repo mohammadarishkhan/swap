@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     
     //MARK: -validation
     func isloginValid() -> Bool {
-        if yourEmailTextField.text == "" || isValidEmail(yourEmailTextField.text ?? "") == false  {
+        if yourEmailTextField.text == "" || isValidEmailOrPhone(yourEmailTextField.text ?? "") == false  {
             return false
         } else if yourpasswordTextField.text!.count < 6 {
             return false
@@ -34,11 +34,15 @@ class LoginViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    func isValidEmailOrPhone(_ info: String) -> Bool {
+        guard info.count == 10, let _ = Int(info) else {
+            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            
+            let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+            return emailPred.evaluate(with: info)
+        }
         
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
+        return true
     }
     
     func isUserExist() -> Bool {
@@ -46,11 +50,14 @@ class LoginViewController: UIViewController {
         if let users = UserModel.readUsers() {
             for user in users {
                 debugPrint(user)
-                if user.authentication.email.lowercased() == yourEmailTextField.text?.lowercased() && user.authentication.password == yourpasswordTextField.text {
-                    return true
+                if user.authentication.password == yourpasswordTextField.text {
+                    if user.authentication.email.lowercased() == yourEmailTextField.text?.lowercased() {
+                        return true
+                    } else if let phone = Int(yourEmailTextField.text ?? ""), user.phone == phone {
+                        return true
+                    }
                 }
             }
-            
         }
         
         return false

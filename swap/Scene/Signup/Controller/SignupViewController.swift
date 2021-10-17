@@ -9,6 +9,7 @@ import UIKit
 
 class SignupViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -30,10 +31,13 @@ class SignupViewController: UIViewController {
         if nameTextField.text!.count < 4 {
             showAlert("Name should be 4 or more characters")
             return false
+        } else if phoneTextField.text!.count != 10 {
+            showAlert("Enter 10 digit phone number")
+            return false
         } else if isValidEmail(emailTextField.text ?? "") == false {
             showAlert("Email must be valid")
             return false
-        } else if passwordTextField.text!.count < 6{
+        } else if passwordTextField.text!.count < 6 {
             showAlert("password must be greater than 6 character")
             return false
         } else if passwordTextField.text != confirmPasswordTextField.text {
@@ -79,11 +83,11 @@ class SignupViewController: UIViewController {
     @IBAction func signupButtonAction() {
         if performValidation() && isUserExist() == false {
             debugPrint("This form is valid!")
-            if let name: String = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
+            if let name: String = nameTextField.text, let phone: String = phoneTextField.text, let phoneNumber =  Int(phone), let email = emailTextField.text, let password = passwordTextField.text {
                 
                 let authenticationModel = AuthenticationModel(email: email, password: password)
                 
-                let userModel = UserModel(name: name, authentication: authenticationModel)
+                let userModel = UserModel(name: name, phone: phoneNumber, authentication: authenticationModel)
                 
                 userModel.writeUser()
                 authenticationModel.didAuthSuccessful()
