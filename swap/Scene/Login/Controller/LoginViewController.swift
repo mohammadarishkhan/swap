@@ -45,31 +45,29 @@ class LoginViewController: UIViewController {
         return true
     }
     
-    func isUserExist() -> Bool {
+    func userInfo() -> UserModel? {
         
         if let users = UserModel.readUsers() {
             for user in users {
                 debugPrint(user)
                 if user.authentication.password == yourpasswordTextField.text {
                     if user.authentication.email.lowercased() == yourEmailTextField.text?.lowercased() {
-                        return true
+                        return user
                     } else if let phone = Int(yourEmailTextField.text ?? ""), user.phone == phone {
-                        return true
+                        return user
                     }
                 }
             }
         }
         
-        return false
+        return nil
     }
     
     // MARK: - action
     @IBAction func LoginButtonAction() {
-        if isloginValid() && isUserExist() {
-            if let email = yourEmailTextField.text {
-                let authenticationModel = AuthenticationModel(email: email, password: "")
-                authenticationModel.didAuthSuccessful()
-            }
+        if isloginValid(), let user = userInfo() {
+            // save user key into user defaults, to check whether it's already login or not
+            user.authentication.didAuthSuccessful()
             if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier") {
                 self.navigationController?.viewControllers = [homeViewController]
             }
