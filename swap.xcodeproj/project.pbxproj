@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7258043A27258776001AD7ED /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258043927258776001AD7ED /* HomeCollectionViewCell.swift */; };
 		725E8E412719B8D80048698A /* AddItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725E8E402719B8D80048698A /* AddItemModel.swift */; };
 		822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822FEDC5270B60D900160314 /* AddItemViewController.swift */; };
 		82472FED27033F1300CB8167 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82472FEC27033F1300CB8167 /* UserModel.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7258043927258776001AD7ED /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		725E8E402719B8D80048698A /* AddItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemModel.swift; sourceTree = "<group>"; };
 		822FEDC5270B60D900160314 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		82472FEC27033F1300CB8167 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7258043827258710001AD7ED /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7258043927258776001AD7ED /* HomeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		725E8E3F2719B8A50048698A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +170,7 @@
 		82748EC226FDEAD10032CFFC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7258043827258710001AD7ED /* Cell */,
 				8278F6F52708ABF9005B24F6 /* Controller */,
 			);
 			path = Home;
@@ -281,6 +292,7 @@
 				82472FED27033F1300CB8167 /* UserModel.swift in Sources */,
 				82748EDA26FDF52E0032CFFC /* LoginModel.swift in Sources */,
 				8278F6F72708AC1A005B24F6 /* HomeViewController.swift in Sources */,
+				7258043A27258776001AD7ED /* HomeCollectionViewCell.swift in Sources */,
 				82748EC926FDECE40032CFFC /* SignupViewController.swift in Sources */,
 				822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */,
 				82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */,
