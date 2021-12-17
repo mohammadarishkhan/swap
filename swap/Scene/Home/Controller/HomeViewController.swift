@@ -9,8 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    private var categoryImages: [String] = ["Electronics", "Fashion", "Furniture", "HomeAppliances", "Toys&Games", "Others"]
-    private var categoryImagesTitle: [String] = ["Electronics", "Fashion", "Furniture", "Home Appliances", "Toys & Games", "Others"]
+    private var categoryImages: [String] = ["electronics", "fashion", "furniture", "appliances", "games", "books", "other"]
+    private var categoryImagesTitle: [String] = ["Electronics", "Fashion", "Furniture", "Home Appliances", "Toys & Games", "Books", "Others"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +36,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         
-        if let image = UIImage(named: categoryImages[indexPath.row]) {
+        if let image = UIImage(named: categoryImages[indexPath.item]) {
             cell.categoryImageView.image = image
         }
          
-        cell.categoryTitleLabel.text = categoryImagesTitle[indexPath.row]
+        cell.categoryTitleLabel.text = categoryImagesTitle[indexPath.item]
         
         return cell
-        
-        
     }
     
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        debugPrint(indexPath.item)
+    }
 }

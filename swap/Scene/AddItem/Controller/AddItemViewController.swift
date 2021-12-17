@@ -56,7 +56,7 @@ class AddItemViewController: UIViewController {
         if performValidation() {
             if let title: String = titleTextField.text, let price = priceTextField.text, let priceValue = Int(price), let description = descriptionTextView.text, let category = categoryButton.title(for: .normal) {
                 
-                let itemModel = AddItemModel(title: title, price: priceValue, category: category, description: description, email: "")
+                let itemModel = AddItemModel(title: title, price: priceValue, category: category, description: description, email: AuthenticationModel.loggedInUserEmail ?? "")
                                 
                 itemModel.writeItem()
                 self.navigationController?.popViewController(animated: false)
@@ -96,7 +96,7 @@ class AddItemViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {     
         
         guard photosStored.count != 3 else {
             showAlert("Maximum 3 images are allowed")
@@ -107,7 +107,7 @@ class AddItemViewController: UIViewController {
     }
 }
 
-extension AddItemViewController: UITextViewDelegate {
+extension AddItemViewController: UITextViewDelegate {                        //this code is for discription
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if descriptionTextView.text == "Description" {
             descriptionTextView.text = ""
@@ -117,7 +117,7 @@ extension AddItemViewController: UITextViewDelegate {
     }
 }
 
-extension AddItemViewController: ImagePickerDelegate {
+extension AddItemViewController: ImagePickerDelegate {                       //this is for image adding block
     func didSelect(image: UIImage?) {
         if let image = image {
             photosStored.append(image)

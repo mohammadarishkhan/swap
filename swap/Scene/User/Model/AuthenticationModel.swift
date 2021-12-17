@@ -13,6 +13,7 @@ struct AuthenticationModel: Codable {
 }
 
 extension AuthenticationModel {
+    // retun loggedin user email
     static var loggedInUserEmail: String? {
         UserDefaults.standard.string(forKey: "loginUserKey")
     }

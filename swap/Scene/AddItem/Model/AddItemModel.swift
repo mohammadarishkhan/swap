@@ -12,7 +12,7 @@ struct AddItemModel: Codable {
     let price: Int
     let category: String
     let description: String
-    let email: String // To store user's reference
+    let email: String                                                            // To store user's reference
 }
 
 extension AddItemModel {
