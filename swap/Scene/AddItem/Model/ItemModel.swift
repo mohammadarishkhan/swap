@@ -1,5 +1,5 @@
 //
-//  AddItemModel.swift
+//  ItemModel.swift
 //  swap
 //
 //  Created by Bigsur on 15/10/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AddItemModel: Codable {
+struct ItemModel: Codable {
     let title: String
     let price: Int
     let category: String
@@ -15,8 +15,8 @@ struct AddItemModel: Codable {
     let email: String                                                            // To store user's reference
 }
 
-extension AddItemModel {
-    static func readItems(for email: String? = nil) -> [AddItemModel]? {
+extension ItemModel {
+    static func readItems(for email: String? = nil) -> [ItemModel]? {
         //array of item model [item model]
         // Read/Get Data
         if let data = UserDefaults.standard.data(forKey: "itemsKey") {
@@ -26,7 +26,7 @@ extension AddItemModel {
                 //JSONDecoder is code for decoding provided by swift
 
                 // Decode User
-                let items = try decoder.decode([AddItemModel].self, from: data)
+                let items = try decoder.decode([ItemModel].self, from: data)
                 guard let email = email else {
                     // To return all items
                     return items
@@ -39,7 +39,7 @@ extension AddItemModel {
                 return filteredItems
 
             } catch {
-                debugPrint("Unable to Decode AddItemModel (\(error))")
+                debugPrint("Unable to Decode ItemModel (\(error))")
             }
         }
         
@@ -47,7 +47,7 @@ extension AddItemModel {
     }
     
     func writeItem() {
-        var items = AddItemModel.readItems() ?? [AddItemModel]()
+        var items = ItemModel.readItems() ?? [ItemModel]()
         items.append(self)
 
         do {
@@ -61,7 +61,7 @@ extension AddItemModel {
             UserDefaults.standard.set(data, forKey: "itemsKey")
 
         } catch {
-            debugPrint("Unable to Encode Array of AddItemModel (\(error))")
+            debugPrint("Unable to Encode Array of ItemModel (\(error))")
         }
     }
 }

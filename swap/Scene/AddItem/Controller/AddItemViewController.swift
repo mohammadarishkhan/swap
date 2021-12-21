@@ -56,7 +56,7 @@ class AddItemViewController: UIViewController {
         if performValidation() {
             if let title: String = titleTextField.text, let price = priceTextField.text, let priceValue = Int(price), let description = descriptionTextView.text, let category = categoryButton.title(for: .normal) {
                 
-                let itemModel = AddItemModel(title: title, price: priceValue, category: category, description: description, email: AuthenticationModel.loggedInUserEmail ?? "")
+                let itemModel = ItemModel(title: title, price: priceValue, category: category, description: description, email: AuthenticationModel.loggedInUserEmail ?? "")
                                 
                 itemModel.writeItem()
                 self.navigationController?.popViewController(animated: false)
