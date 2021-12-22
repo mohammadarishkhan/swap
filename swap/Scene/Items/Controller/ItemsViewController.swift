@@ -8,9 +8,12 @@
 import UIKit
 
 class ItemsViewController: UIViewController {
-    lazy var cellSize = (self.view.frame.width - 30) / 2
+    
     @IBOutlet weak private var collectionView: UICollectionView!
-
+    
+    private var items: [ItemModel]?
+    lazy var cellSize = (self.view.frame.width - 30) / 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,16 +22,22 @@ class ItemsViewController: UIViewController {
         layout.itemSize = CGSize(width: cellSize, height: cellSize)
         collectionView.collectionViewLayout = layout
     }
-
+    
+    func refresh() {
+        loadItems()
+    }
+    
 }
 
 private extension ItemsViewController {
-    
+    func loadItems() {
+        items = ItemModel.readItems()
+    }
 }
 
 extension ItemsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return items?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,14 +45,13 @@ extension ItemsViewController: UICollectionViewDataSource, UICollectionViewDeleg
             return UICollectionViewCell()
         }
         
-        if let image = UIImage(named: "macbook") {
+        if let item = items?[indexPath.item], let imageName = item.imageNameList.first {
+            let image = ImageStore.retrieve(imageNamed: imageName)
             cell.itemImageView.image = image
+            cell.itemTitleLabel.text = item.title
+            cell.itemPriceLabel.text = "\(item.price) INR"
         }
         
-        cell.itemTitleLabel.text = "MacBook Pro"
-        cell.itemPriceLabel.text = "1,75,000 INR"
-       
         return cell
-     
     }
 }

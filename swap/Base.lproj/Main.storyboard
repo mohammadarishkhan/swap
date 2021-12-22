@@ -284,7 +284,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJ3-js-KZ0">
                                 <rect key="frame" x="0.0" y="119" width="390" height="691"/>
                                 <connections>
-                                    <segue destination="TQ8-Jw-XJA" kind="embed" id="Ph7-g1-bwX"/>
+                                    <segue destination="TQ8-Jw-XJA" kind="embed" identifier="ItemsViewControllerIdentifier" id="Ph7-g1-bwX"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -302,6 +302,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eIq-1e-kpL"/>
                     <connections>
+                        <outlet property="itemsVCContainerView" destination="oJ3-js-KZ0" id="qpK-Y7-aw2"/>
                         <segue destination="A4b-zX-656" kind="show" identifier="AddItemViewControllerIdentifier" id="DNd-Wb-YZu"/>
                     </connections>
                 </viewController>
@@ -667,6 +668,11 @@
                                                 <constraint firstItem="S4a-Nq-SYa" firstAttribute="leading" secondItem="L2r-84-84L" secondAttribute="leading" id="ug6-R9-xj9"/>
                                                 <constraint firstAttribute="trailing" secondItem="S4a-Nq-SYa" secondAttribute="trailing" id="xFm-AO-NoU"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="itemImageView" destination="S4a-Nq-SYa" id="S65-g7-7qo"/>
@@ -681,6 +687,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="QaS-Kk-0Ok"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="oOy-a9-2XV" secondAttribute="bottom" id="2bp-03-ZfI"/>

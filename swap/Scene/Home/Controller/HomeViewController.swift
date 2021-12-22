@@ -9,17 +9,32 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var itemsVCContainerView: UIView!
+    
     private var categoryImages: [String] = ["electronics", "fashion", "furniture", "appliances", "games", "books", "other"]
     private var categoryImagesTitle: [String] = ["Electronics", "Fashion", "Furniture", "Home Appliances", "Toys & Games", "Books", "Others"]
     private var selectedCategoryIndex: Int?
+    private var itemsVC: ItemsViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButton
-
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        itemsVC?.refresh()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ItemsViewController {
+            self.itemsVC = vc
+        }
+    }
+    
+    // ItemsViewControllerIdentifier
     
    @objc func addTapped() {
         performSegue(withIdentifier: "AddItemViewControllerIdentifier", sender: self)
@@ -81,5 +96,4 @@ private extension HomeViewController {
         cell?.contentView.borderWidth = 3                                         //when iteam is selected.....
         cell?.contentView.borderColor = .white
     }
-    
 }
