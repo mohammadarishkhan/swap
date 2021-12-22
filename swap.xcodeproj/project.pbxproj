@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		720B9655277387C6003DB4C4 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B9654277387C6003DB4C4 /* ImageStore.swift */; };
 		7258043A27258776001AD7ED /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258043927258776001AD7ED /* HomeCollectionViewCell.swift */; };
 		725E8E412719B8D80048698A /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725E8E402719B8D80048698A /* ItemModel.swift */; };
 		72623E5B277227CE00AF7413 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72623E5A277227CE00AF7413 /* ItemsViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		720B9654277387C6003DB4C4 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		7258043927258776001AD7ED /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		725E8E402719B8D80048698A /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		72623E5A277227CE00AF7413 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */,
 				82AFF82427130CE4007189B8 /* ImagePicker.swift */,
+				720B9654277387C6003DB4C4 /* ImageStore.swift */,
 			);
 			path = Uitilities;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */,
 				82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */,
 				825414FC26FB49AA00D19311 /* SceneDelegate.swift in Sources */,
+				720B9655277387C6003DB4C4 /* ImageStore.swift in Sources */,
 				82748ED726FDF4FC0032CFFC /* LoginViewController.swift in Sources */,
 				72623E5B277227CE00AF7413 /* ItemsViewController.swift in Sources */,
 				725E8E412719B8D80048698A /* ItemModel.swift in Sources */,

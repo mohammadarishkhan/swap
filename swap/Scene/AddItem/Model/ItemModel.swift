@@ -12,6 +12,7 @@ struct ItemModel: Codable {
     let price: Int
     let category: String
     let description: String
+    let imageNameList: [String]
     let email: String                                                            // To store user's reference
 }
 

@@ -56,7 +56,19 @@ class AddItemViewController: UIViewController {
         if performValidation() {
             if let title: String = titleTextField.text, let price = priceTextField.text, let priceValue = Int(price), let description = descriptionTextView.text, let category = categoryButton.title(for: .normal) {
                 
-                let itemModel = ItemModel(title: title, price: priceValue, category: category, description: description, email: AuthenticationModel.loggedInUserEmail ?? "")
+                var imageNameList = [String]()
+                for image in photosStored {
+                    let name = UUID().uuidString
+                    debugPrint("UUID: " + name)
+                    do {
+                        try ImageStore.store(image: image, name: name)
+                        imageNameList.append(name)
+                    } catch {
+                        debugPrint("Unable to store image (\(error))")
+                    }
+                }
+                
+                let itemModel = ItemModel(title: title, price: priceValue, category: category, description: description, imageNameList: imageNameList, email: AuthenticationModel.loggedInUserEmail ?? "")
                                 
                 itemModel.writeItem()
                 self.navigationController?.popViewController(animated: false)
@@ -122,8 +134,6 @@ extension AddItemViewController: ImagePickerDelegate {                       //t
         if let image = image {
             photosStored.append(image)
             photosCountLabel.text = "Photos: \(photosStored.count)/3. Add a photo to continiue."
-            
-            
         }
     }
 }
