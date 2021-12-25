@@ -13,6 +13,7 @@ class ItemsViewController: UIViewController {
     
     private var items: [ItemModel]?
     lazy var cellSize = (self.view.frame.width - 30) / 2
+    var selectedCategory: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,8 @@ class ItemsViewController: UIViewController {
         collectionView.collectionViewLayout = layout
     }
     
-    func refresh() {
+    func refresh(category: String? = nil) {
+        selectedCategory = category
         loadItems()
     }
     
@@ -32,6 +34,12 @@ class ItemsViewController: UIViewController {
 private extension ItemsViewController {
     func loadItems() {
         items = ItemModel.readItems()
+        if let category = selectedCategory, let items = items {
+            self.items = items.filter {
+                $0.category == category
+            }
+        }
+        collectionView.reloadData()
     }
 }
 
@@ -55,3 +63,5 @@ extension ItemsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
     }
 }
+
+ 

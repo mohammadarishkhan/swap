@@ -25,7 +25,11 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        itemsVC?.refresh()
+        var category: String?
+        if let selectedCategoryIndex = selectedCategoryIndex {
+            category = categoryImagesTitle[selectedCategoryIndex]
+        }
+        itemsVC?.refresh(category: category)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +78,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.item == selectedCategoryIndex {
             reset(cell: cell)                                                     //this code for reset selected iteam on click
             selectedCategoryIndex = nil
+            itemsVC?.refresh()
         } else {
             selectedCategoryIndex = indexPath.item
             
@@ -82,6 +87,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             
             select(cell: cell)
+            let category = categoryImagesTitle[indexPath.item]
+            itemsVC?.refresh(category: category)
         }
     }
 }
