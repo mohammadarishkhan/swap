@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     private var categoryImagesTitle: [String] = ["Electronics", "Fashion", "Furniture", "Home Appliances", "Toys & Games", "Books", "Others"]
     private var selectedCategoryIndex: Int?
     private var itemsVC: ItemsViewController?
+    private var selectedItem: ItemModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,9 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ItemsViewController {
             self.itemsVC = vc
+            self.itemsVC?.delegate = self
+        } else if let vc = segue.destination as? ItemDetailsViewController {
+            vc.item = selectedItem
         }
     }
     
@@ -87,7 +91,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             
             select(cell: cell)
-            let category = categoryImagesTitle[indexPath.item]
+                let category = categoryImagesTitle[indexPath.item]
             itemsVC?.refresh(category: category)
         }
     }
@@ -102,5 +106,12 @@ private extension HomeViewController {
     func select(cell: UICollectionViewCell?) {
         cell?.contentView.borderWidth = 3                                         //when iteam is selected.....
         cell?.contentView.borderColor = .white
+    }
+}
+
+extension HomeViewController: ItemsViewControllerProtocol {
+    func didSelectedItem(item: ItemModel) {
+        selectedItem = item
+        performSegue(withIdentifier: "ItemDetailsViewControllerIdentifier", sender: self)
     }
 }

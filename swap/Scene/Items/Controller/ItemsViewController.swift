@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ItemsViewControllerProtocol: class {
+    func didSelectedItem(item: ItemModel)
+}
+
+
 class ItemsViewController: UIViewController {
     
     @IBOutlet weak private var collectionView: UICollectionView!
@@ -14,6 +19,7 @@ class ItemsViewController: UIViewController {
     private var items: [ItemModel]?
     lazy var cellSize = (self.view.frame.width - 30) / 2
     var selectedCategory: String?
+    weak var delegate: ItemsViewControllerProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,7 @@ class ItemsViewController: UIViewController {
         layout.itemSize = CGSize(width: cellSize, height: cellSize)
         collectionView.collectionViewLayout = layout
     }
+    
     
     func refresh(category: String? = nil) {
         selectedCategory = category
@@ -62,6 +69,14 @@ extension ItemsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {           //click action
+        guard let selectedItem = items?[indexPath.item] else { return }
+        delegate?.didSelectedItem(item: selectedItem)
+    }
+    
 }
+
+
 
  
