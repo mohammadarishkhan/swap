@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - action
-    @IBAction func LoginButtonAction() {
+    @IBAction func loginButtonAction() {
         if isloginValid(), let user = userInfo() {
             // save user key into user defaults, to check whether it's already login or not
             user.authentication.didAuthSuccessful()
