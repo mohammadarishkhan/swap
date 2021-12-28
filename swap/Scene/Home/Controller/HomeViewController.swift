@@ -22,6 +22,10 @@ class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButton
+        
+        let image = UIImage(named: "profile_placeholder")
+        let profileBarButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(userProfileTapped))
+        navigationItem.leftBarButtonItem = profileBarButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +50,10 @@ class HomeViewController: UIViewController {
     
    @objc func addTapped() {
         performSegue(withIdentifier: "AddItemViewControllerIdentifier", sender: self)
+    }
+    
+    @objc func userProfileTapped() {
+        performSegue(withIdentifier: "UserViewControllerIdentifier", sender: self)
     }
 
 }

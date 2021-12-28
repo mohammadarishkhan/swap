@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    
     func isValidEmailOrPhone(_ info: String) -> Bool {
         guard info.count == 10, let _ = Int(info) else {
             let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

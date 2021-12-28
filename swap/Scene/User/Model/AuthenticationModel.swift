@@ -18,6 +18,10 @@ extension AuthenticationModel {
         UserDefaults.standard.string(forKey: "loginUserKey")
     }
     
+    static func logout() {
+        UserDefaults.standard.removeObject(forKey: "loginUserKey")
+    }
+    
     static var isAlreadyLogin: Bool {
         return loggedInUserEmail != nil
     }

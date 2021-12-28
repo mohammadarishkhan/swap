@@ -13,7 +13,7 @@
         <!--Signup View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignupViewController" customModule="swap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewControllerIdentifier" id="BYZ-38-t0r" customClass="SignupViewController" customModule="swap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                                 <rect key="frame" x="271.66666666666669" y="765" width="34" height="30"/>
                                 <state key="normal" title="login"/>
                                 <connections>
-                                    <segue destination="ajD-te-9aO" kind="show" id="5DJ-ZQ-Rod"/>
+                                    <segue destination="ajD-te-9aO" kind="show" identifier="LoginViewControllerIdentifier" id="5DJ-ZQ-Rod"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -305,6 +305,7 @@
                         <outlet property="itemsVCContainerView" destination="oJ3-js-KZ0" id="qpK-Y7-aw2"/>
                         <segue destination="A4b-zX-656" kind="show" identifier="AddItemViewControllerIdentifier" id="DNd-Wb-YZu"/>
                         <segue destination="iQA-KG-iWt" kind="show" identifier="ItemDetailsViewControllerIdentifier" id="YXM-DV-IWE"/>
+                        <segue destination="rlr-5S-KIe" kind="show" identifier="UserViewControllerIdentifier" id="P3T-f4-19M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGU-g2-Sj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -593,6 +594,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNx-xD-jF2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-733.33333333333337" y="26.785714285714285"/>
+        </scene>
+        <!--User View Controller-->
+        <scene sceneID="Xz9-t2-0Ix">
+            <objects>
+                <viewController id="rlr-5S-KIe" customClass="UserViewController" customModule="swap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e20-st-ORe">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9nP-dO-beS"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="93M-1m-2tn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICN-7A-xSX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-734" y="809"/>
         </scene>
         <!--Items View Controller-->
         <scene sceneID="Sxi-Zc-PTc">

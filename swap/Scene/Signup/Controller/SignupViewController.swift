@@ -25,6 +25,10 @@ class SignupViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    func showLoginVC() {
+        performSegue(withIdentifier: "LoginViewControllerIdentifier", sender: self)
+    }
+    
     //MARK: - Validation
     func performValidation() -> Bool {
         
