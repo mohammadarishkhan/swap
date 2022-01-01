@@ -46,8 +46,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // ItemsViewControllerIdentifier
-    
    @objc func addTapped() {
         performSegue(withIdentifier: "AddItemViewControllerIdentifier", sender: self)
     }

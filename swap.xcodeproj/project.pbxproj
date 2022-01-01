@@ -13,6 +13,8 @@
 		725E8E412719B8D80048698A /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725E8E402719B8D80048698A /* ItemModel.swift */; };
 		72623E5B277227CE00AF7413 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72623E5A277227CE00AF7413 /* ItemsViewController.swift */; };
 		72623E5F27722C4C00AF7413 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72623E5E27722C4C00AF7413 /* ItemCollectionViewCell.swift */; };
+		72856C94277F0C39001D9295 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72856C93277F0C39001D9295 /* ItemsTableViewController.swift */; };
+		72856C97277F0DAD001D9295 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72856C96277F0DAD001D9295 /* ItemTableViewCell.swift */; };
 		72B8373F27786EF200D9A3BC /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B8373E27786EF200D9A3BC /* ItemDetailsViewController.swift */; };
 		822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822FEDC5270B60D900160314 /* AddItemViewController.swift */; };
 		82472FED27033F1300CB8167 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82472FEC27033F1300CB8167 /* UserModel.swift */; };
@@ -37,6 +39,8 @@
 		725E8E402719B8D80048698A /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		72623E5A277227CE00AF7413 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		72623E5E27722C4C00AF7413 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		72856C93277F0C39001D9295 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
+		72856C96277F0DAD001D9295 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		72B8373E27786EF200D9A3BC /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		822FEDC5270B60D900160314 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		82472FEC27033F1300CB8167 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				72623E5A277227CE00AF7413 /* ItemsViewController.swift */,
+				72856C93277F0C39001D9295 /* ItemsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				72623E5E27722C4C00AF7413 /* ItemCollectionViewCell.swift */,
+				72856C96277F0DAD001D9295 /* ItemTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				72B8373F27786EF200D9A3BC /* ItemDetailsViewController.swift in Sources */,
 				72355078277B4963005B4850 /* UserViewController.swift in Sources */,
 				72623E5F27722C4C00AF7413 /* ItemCollectionViewCell.swift in Sources */,
+				72856C94277F0C39001D9295 /* ItemsTableViewController.swift in Sources */,
 				827FD4D9270CB5C800A9CE0E /* UIViewExtension.swift in Sources */,
 				825414FA26FB49AA00D19311 /* AppDelegate.swift in Sources */,
 				82472FED27033F1300CB8167 /* UserModel.swift in Sources */,
@@ -361,6 +368,7 @@
 				7258043A27258776001AD7ED /* HomeCollectionViewCell.swift in Sources */,
 				82748EC926FDECE40032CFFC /* SignupViewController.swift in Sources */,
 				822FEDC6270B60D900160314 /* AddItemViewController.swift in Sources */,
+				72856C97277F0DAD001D9295 /* ItemTableViewCell.swift in Sources */,
 				82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */,
 				825414FC26FB49AA00D19311 /* SceneDelegate.swift in Sources */,
 				720B9655277387C6003DB4C4 /* ImageStore.swift in Sources */,

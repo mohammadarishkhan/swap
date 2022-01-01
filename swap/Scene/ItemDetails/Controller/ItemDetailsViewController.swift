@@ -49,7 +49,15 @@ private extension ItemDetailsViewController {
     }
     
     @IBAction func swapButtonAction() {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ItemsTableViewControllerIdentifier") as? ItemsTableViewController else {
+            return
+        }
+        viewController.selectedEmail = AuthenticationModel.loggedInUserEmail
         
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.swapItem = item
+        
+        self.present(viewController, animated: true)
     }
     
     @objc func getSwipeAction( _ recognizer : UISwipeGestureRecognizer) {
