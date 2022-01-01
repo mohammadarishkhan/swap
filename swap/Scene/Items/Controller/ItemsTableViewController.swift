@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol ItemsTableViewControllerProtocol: class {
+    func didSwapSuccessful()
+    
+}
+
 class ItemsTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var gestureView: UIView!
+    weak var delegate: ItemsTableViewControllerProtocol?
+    
     
     private var items: [ItemModel]?
     var selectedEmail: String?
@@ -77,10 +84,9 @@ extension ItemsTableViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = UIAlertController(title: "Swap", message: myItem + " with " + otherItem  , preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
-            // on ok click
-            self.dismiss(animated: false) {
-                debugPrint(self.navigationController)
-            }
+            
+            self.delegate?.didSwapSuccessful()
+            self.dismiss(animated: false)
         }
         
         vc.addAction(okAction)
@@ -92,3 +98,4 @@ extension ItemsTableViewController: UITableViewDelegate, UITableViewDataSource {
         self.present(vc, animated: true, completion:nil)
     }
 }
+

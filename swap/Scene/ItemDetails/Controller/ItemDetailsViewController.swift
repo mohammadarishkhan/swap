@@ -9,6 +9,8 @@ import UIKit
 
 class ItemDetailsViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -56,14 +58,14 @@ private extension ItemDetailsViewController {
         
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.swapItem = item
-        
+        viewController.delegate = self
         self.present(viewController, animated: true)
     }
     
     @objc func getSwipeAction( _ recognizer : UISwipeGestureRecognizer) {
         var imageName: String?
         if recognizer.direction == .right && pageIndicator.currentPage != 0 {
-        // previous image
+            // previous image
             pageIndicator.currentPage -= 1
             imageName = item?.imageNameList[pageIndicator.currentPage]
             
@@ -83,3 +85,13 @@ private extension ItemDetailsViewController {
         imageView.image = image
     }
 }
+
+extension ItemDetailsViewController: ItemsTableViewControllerProtocol {
+    func didSwapSuccessful() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
+}
+
