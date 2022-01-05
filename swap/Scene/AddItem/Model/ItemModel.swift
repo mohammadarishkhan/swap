@@ -8,6 +8,7 @@
 import Foundation
 
 struct ItemModel: Codable {
+    let itemId: String
     let title: String
     let price: Int
     let category: String
@@ -65,5 +66,31 @@ extension ItemModel {
             debugPrint("Unable to Encode Array of ItemModel (\(error))")
         }
     }
+    
+    //Note: This function is only call when we need to update ItemModel with new property
+    /*static func updateAllItems() {
+        var itemList = [ItemModel]()
+        if let items = ItemModel.readItems() {
+            for item in items {
+                var itemObj = item
+                itemObj.itemId = UUID().uuidString
+                itemList.append(itemObj)
+            }
+            
+            do {
+                // Create JSON Encoder
+                let encoder = JSONEncoder()
+                
+                // Encode Items
+                let data = try encoder.encode(itemList)
+                
+                // Write/Set Data
+                UserDefaults.standard.set(data, forKey: "itemsKey")
+                
+            } catch {
+                debugPrint("Unable to Encode Array of ItemModel (\(error))")
+            }
+        }
+    } */
 }
 

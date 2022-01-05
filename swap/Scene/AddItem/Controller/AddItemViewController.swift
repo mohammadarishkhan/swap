@@ -68,7 +68,9 @@ class AddItemViewController: UIViewController {
                     }
                 }
                 
-                let itemModel = ItemModel(title: title, price: priceValue, category: category, description: description, imageNameList: imageNameList, email: AuthenticationModel.loggedInUserEmail ?? "")
+                let itemId = UUID().uuidString
+                
+                let itemModel = ItemModel(itemId: itemId, title: title, price: priceValue, category: category, description: description, imageNameList: imageNameList, email: AuthenticationModel.loggedInUserEmail ?? "")
                                 
                 itemModel.writeItem()
                 self.navigationController?.popViewController(animated: false)

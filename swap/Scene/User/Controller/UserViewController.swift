@@ -8,6 +8,14 @@
 import UIKit
 
 class UserViewController: UIViewController {
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var segmentcontrol: UISegmentedControl!
+
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
