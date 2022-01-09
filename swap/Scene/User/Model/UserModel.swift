@@ -10,6 +10,7 @@ import Foundation
 struct UserModel: Codable {
     let name: String
     let phone: Int
+    var imageName: String?
     let authentication: AuthenticationModel
 }
 
@@ -43,6 +44,31 @@ extension UserModel {
 
             // Encode User
             let data = try encoder.encode(users)
+
+            // Write/Set Data
+            UserDefaults.standard.set(data, forKey: "usersKey")
+
+        } catch {
+            debugPrint("Unable to Encode Array of UserModel (\(error))")
+        }
+    }
+   
+    func updateUser() {
+        let users = UserModel.readUsers() ?? [UserModel]()
+        var updatedUsers = [UserModel]()
+        for user in users {
+            var updateUser = user
+            if user.authentication.email.lowercased() == self.authentication.email.lowercased() {
+                updateUser.imageName = self.imageName
+            }
+            updatedUsers.append(updateUser)
+        }
+        do {
+            // Create JSON Encoder
+            let encoder = JSONEncoder()
+
+            // Encode User
+            let data = try encoder.encode(updatedUsers)
 
             // Write/Set Data
             UserDefaults.standard.set(data, forKey: "usersKey")

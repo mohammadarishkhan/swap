@@ -710,13 +710,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXX-v4-p2H" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UHj-eA-WhS">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iY-cL-PPN">
                                         <rect key="frame" x="20" y="50" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Jsb-u6-MWJ"/>
-                                            <constraint firstAttribute="height" constant="100" id="Xts-Hn-Pe8"/>
+                                            <constraint firstAttribute="height" constant="100" id="kCk-TJ-yFy"/>
+                                            <constraint firstAttribute="width" constant="100" id="m45-fn-JZt"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" backgroundImage="profile_placeholder"/>
+                                        <connections>
+                                            <action selector="addPhotosTapped:" destination="rlr-5S-KIe" eventType="touchUpInside" id="XWU-Vt-Ytl"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NP-3q-kb9" userLabel="nameLabel">
                                         <rect key="frame" x="140" y="50" width="274" height="25"/>
                                         <constraints>
@@ -751,15 +755,15 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="0QN-sc-nNV"/>
                                     <constraint firstAttribute="trailing" secondItem="cKi-9Z-eAC" secondAttribute="trailing" id="2Wy-Rs-spL"/>
-                                    <constraint firstItem="UHj-eA-WhS" firstAttribute="centerY" secondItem="WXX-v4-p2H" secondAttribute="centerY" id="Dof-3j-OtW"/>
-                                    <constraint firstItem="cKi-9Z-eAC" firstAttribute="leading" secondItem="UHj-eA-WhS" secondAttribute="trailing" constant="20" id="JVz-OA-Of1"/>
+                                    <constraint firstItem="ibE-Zv-Bq2" firstAttribute="leading" secondItem="2iY-cL-PPN" secondAttribute="trailing" constant="20" id="OWD-1w-jFV"/>
+                                    <constraint firstItem="0NP-3q-kb9" firstAttribute="leading" secondItem="2iY-cL-PPN" secondAttribute="trailing" constant="20" id="Ogf-Np-3Ul"/>
                                     <constraint firstItem="ibE-Zv-Bq2" firstAttribute="top" secondItem="cKi-9Z-eAC" secondAttribute="bottom" constant="15" id="Xng-Uz-blA"/>
                                     <constraint firstAttribute="trailing" secondItem="0NP-3q-kb9" secondAttribute="trailing" id="ddZ-5E-Gos"/>
-                                    <constraint firstItem="ibE-Zv-Bq2" firstAttribute="leading" secondItem="UHj-eA-WhS" secondAttribute="trailing" constant="20" id="fHI-gI-XkP"/>
+                                    <constraint firstItem="2iY-cL-PPN" firstAttribute="leading" secondItem="WXX-v4-p2H" secondAttribute="leading" constant="20" id="gZd-ER-Thc"/>
                                     <constraint firstAttribute="trailing" secondItem="ibE-Zv-Bq2" secondAttribute="trailing" id="j6I-Nb-MN1"/>
-                                    <constraint firstItem="0NP-3q-kb9" firstAttribute="leading" secondItem="UHj-eA-WhS" secondAttribute="trailing" constant="20" id="jNy-s2-yJM"/>
                                     <constraint firstItem="0NP-3q-kb9" firstAttribute="top" secondItem="WXX-v4-p2H" secondAttribute="top" constant="50" id="knF-Ll-Lb2"/>
-                                    <constraint firstItem="UHj-eA-WhS" firstAttribute="leading" secondItem="WXX-v4-p2H" secondAttribute="leading" constant="20" id="nz5-sc-u4h"/>
+                                    <constraint firstItem="cKi-9Z-eAC" firstAttribute="leading" secondItem="2iY-cL-PPN" secondAttribute="trailing" constant="20" id="rno-dm-1c0"/>
+                                    <constraint firstItem="2iY-cL-PPN" firstAttribute="centerY" secondItem="WXX-v4-p2H" secondAttribute="centerY" id="vFr-1i-Vuu"/>
                                     <constraint firstItem="cKi-9Z-eAC" firstAttribute="top" secondItem="0NP-3q-kb9" secondAttribute="bottom" constant="15" id="wbO-ha-oFe"/>
                                 </constraints>
                             </view>
@@ -799,7 +803,7 @@
                         <outlet property="nameLabel" destination="0NP-3q-kb9" id="h0N-ga-2q9"/>
                         <outlet property="phoneLabel" destination="cKi-9Z-eAC" id="J38-ke-s2r"/>
                         <outlet property="segmentcontrol" destination="lH5-mB-b2f" id="oYq-D4-7Be"/>
-                        <outlet property="userImageView" destination="UHj-eA-WhS" id="ms2-8O-qba"/>
+                        <outlet property="userImageButton" destination="2iY-cL-PPN" id="rtm-2p-rCF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICN-7A-xSX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1043,6 +1047,7 @@
                     <view key="view" contentMode="scaleToFill" id="csL-Lh-f4I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UNm-3Z-xmW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -1054,6 +1059,7 @@
     <resources>
         <image name="ImageFolder" width="40" height="46.333332061767578"/>
         <image name="dropdown" width="15" height="15"/>
+        <image name="profile_placeholder" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

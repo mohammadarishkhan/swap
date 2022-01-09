@@ -8,20 +8,31 @@
 import UIKit
 
 class UserViewController: UIViewController {
-    @IBOutlet weak var userImageView: UIImageView!
+    
+    @IBOutlet weak var userImageButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var segmentcontrol: UISegmentedControl!
-
-
     
+    lazy var user: UserModel = getUser()!
+    var photoStored: UIImage?
+    var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let logoutBarButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
         navigationItem.rightBarButtonItem = logoutBarButton
+        
+        nameLabel.text = user.name
+        phoneLabel.text = "\(user.phone)"
+        emailLabel.text = user.authentication.email
+        if let imageName = user.imageName {
+           let image =  ImageStore.retrieve(imageNamed: imageName)
+            userImageButton.setImage(image, for: .normal)
+        }
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     @objc func logoutTapped() {
@@ -45,4 +56,40 @@ class UserViewController: UIViewController {
         self.present(vc, animated: true, completion:nil)
     }
     
+    func getUser() -> UserModel? {
+        let loggedInUserEmail = AuthenticationModel.loggedInUserEmail ?? ""
+        if let users = UserModel.readUsers() {
+            let filteredUsers = users.filter {
+                $0.authentication.email.lowercased() == loggedInUserEmail.lowercased()
+            }
+            return filteredUsers.first
+        }
+        
+        return nil
+    }
+    
+    @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {
+        
+        self.imagePicker.present(from: userImageButton)
+    }
+    
 }
+
+extension UserViewController: ImagePickerDelegate {                       //this is for image adding block
+    func didSelect(image: UIImage?) {
+        if let image = image {
+            photoStored = image
+            userImageButton.setImage(image, for: .normal)
+            let name = UUID().uuidString
+            debugPrint("UUID: " + name)
+            do {
+                try ImageStore.store(image: image, name: name)
+                user.imageName = name
+                user.updateUser()
+            } catch {
+                debugPrint("Unable to store image (\(error))")
+            }
+        }
+    }
+}
+
