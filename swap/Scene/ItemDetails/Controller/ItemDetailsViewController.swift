@@ -51,7 +51,7 @@ private extension ItemDetailsViewController {
     }
     
     @IBAction func swapButtonAction() {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ItemsTableViewControllerIdentifier") as? ItemsTableViewController else {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyItemsViewControllerIdentifier") as? MyItemsViewController else {
             return
         }
         viewController.selectedEmail = AuthenticationModel.loggedInUserEmail
@@ -86,7 +86,7 @@ private extension ItemDetailsViewController {
     }
 }
 
-extension ItemDetailsViewController: ItemsTableViewControllerProtocol {
+extension ItemDetailsViewController: MyItemsViewControllerProtocol {
     func didSwapSuccessful() {
         self.navigationController?.popViewController(animated: true)
     }

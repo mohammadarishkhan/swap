@@ -35,9 +35,17 @@ class UserViewController: UIViewController {
         imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ItemsTableViewController {
+            vc.delegate = self
+            vc.titleLabelYValue = -17
+            vc.priceLabelYValue = 17
+        }
+        super.prepare(for: segue, sender: sender)
+    }
+    
     @objc func logoutTapped() {
         logoutAlert()
-        
     }
     
     func logoutAlert() {
@@ -91,5 +99,13 @@ extension UserViewController: ImagePickerDelegate {                       //this
             }
         }
     }
+}
+
+extension UserViewController: ItemsTableViewControllerProtocol {
+    func getCellHeight() -> CGFloat {
+        return 100
+    }
+    
+    func didSelectItem(_ selectedItem: ItemModel?, indexPath: IndexPath) {}
 }
 

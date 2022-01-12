@@ -8,40 +8,28 @@
 import UIKit
 
 protocol ItemsTableViewControllerProtocol: class {
-    func didSwapSuccessful()
-    
+    func didSelectItem(_ selectedItem: ItemModel?, indexPath: IndexPath)
+    func getCellHeight() -> CGFloat
 }
 
 class ItemsTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var gestureView: UIView!
     weak var delegate: ItemsTableViewControllerProtocol?
-    
     
     private var items: [ItemModel]?
     var selectedEmail: String?
-    var swapItem: ItemModel?
-    
+    var titleLabelYValue: CGFloat = -10
+    var priceLabelYValue: CGFloat = 10
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addGesture()
         loadItems()
     }
     
 }
 
 private extension ItemsTableViewController {
-    func addGesture() {
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.getSwipeAction(_:)))
-        swipeGesture.direction = .down
-        self.gestureView.addGestureRecognizer(swipeGesture)
-    }
-    
-    @objc func getSwipeAction( _ recognizer: UISwipeGestureRecognizer) {
-        self.dismiss(animated: true)
-    }
     
     func loadItems() {
         items = ItemModel.readItems(for: selectedEmail)
@@ -64,38 +52,23 @@ extension ItemsTableViewController: UITableViewDelegate, UITableViewDataSource {
             cell.itemImageView.image = image
             cell.itemTitleLabel.text = item.title
             cell.itemPriceLabel.text = "\(item.price) INR"
+            cell.titleLabelYLayoutConstraint.constant = titleLabelYValue
+            cell.priceLabelYLayoutConstraint.constant = priceLabelYValue
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 53
+        return delegate?.getCellHeight() ?? 53
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let selectedItem = items?[indexPath.row]
-        showSwipeAlert(selectedItem, indexPath: indexPath)
+        delegate?.didSelectItem(selectedItem, indexPath: indexPath)
     }
     
-    func showSwipeAlert(_ selectedItem: ItemModel?, indexPath: IndexPath) {
-        let myItem = selectedItem?.title ?? ""
-        let otherItem = swapItem?.title ?? ""
-        let vc = UIAlertController(title: "Swap", message: myItem + " with " + otherItem  , preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
-            
-            self.delegate?.didSwapSuccessful()
-            self.dismiss(animated: false)
-        }
-        
-        vc.addAction(okAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        }
-        vc.addAction(cancelAction)
-        
-        self.present(vc, animated: true, completion:nil)
-    }
 }
 
