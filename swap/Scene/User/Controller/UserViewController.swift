@@ -9,6 +9,8 @@ import UIKit
 
 class UserViewController: UIViewController {
     
+    @IBOutlet weak var myItemsContainerView: UIView!
+    @IBOutlet weak var swapItemsContainerView: UIView!
     @IBOutlet weak var userImageButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -29,7 +31,7 @@ class UserViewController: UIViewController {
         phoneLabel.text = "\(user.phone)"
         emailLabel.text = user.authentication.email
         if let imageName = user.imageName {
-           let image =  ImageStore.retrieve(imageNamed: imageName)
+            let image =  ImageStore.retrieve(imageNamed: imageName)
             userImageButton.setImage(image, for: .normal)
         }
         imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -40,6 +42,8 @@ class UserViewController: UIViewController {
             vc.delegate = self
             vc.titleLabelYValue = -17
             vc.priceLabelYValue = 17
+            vc.selectedEmail = AuthenticationModel.loggedInUserEmail
+
         }
         super.prepare(for: segue, sender: sender)
     }
@@ -79,6 +83,23 @@ class UserViewController: UIViewController {
     @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {
         
         self.imagePicker.present(from: userImageButton)
+    }
+    
+    @IBAction func segmentedControlButtonClickAction(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            myItemsContainerView.isHidden = false
+            swapItemsContainerView.isHidden = true
+        }
+        else if sender.selectedSegmentIndex == 1 {
+            myItemsContainerView.isHidden = true
+            swapItemsContainerView.isHidden = false
+            
+        }
+        else if sender.selectedSegmentIndex == 2 {
+            myItemsContainerView.isHidden = true
+            swapItemsContainerView.isHidden = false
+            
+        }
     }
     
 }
