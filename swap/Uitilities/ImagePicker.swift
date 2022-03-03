@@ -2,12 +2,12 @@
 //  ImagePicker.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 10/10/21.
+//  Created by Mohammad Arish Khan on 10/10/21.
 //
 
 import UIKit
 
-public protocol ImagePickerDelegate: class {
+public protocol ImagePickerDelegate: AnyObject {
     func didSelect(image: UIImage?)
 }
 

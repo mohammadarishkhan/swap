@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 22/09/21.
+//  Created by Mohammad Arish Khan on 22/09/21.
 //
 
 import UIKit

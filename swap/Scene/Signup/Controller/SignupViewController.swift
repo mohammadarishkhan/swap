@@ -2,7 +2,7 @@
 //  SignupViewController.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 24/09/21.
+//  Created by Mohammad Arish Khan on 24/09/21.
 //
 
 import UIKit

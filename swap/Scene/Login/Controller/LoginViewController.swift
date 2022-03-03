@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 24/09/21.
+//  Created by Mohammad Arish Khanon 24/09/21.
 //
 
 import UIKit

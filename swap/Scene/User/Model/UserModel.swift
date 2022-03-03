@@ -2,7 +2,7 @@
 //  UserModel.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 28/09/21.
+//  Created by Mohammad Arish Khan on 28/09/21.
 //
 
 import Foundation

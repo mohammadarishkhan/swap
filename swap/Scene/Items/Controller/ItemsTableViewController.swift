@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ItemsTableViewControllerProtocol: class {
+protocol ItemsTableViewControllerProtocol: AnyObject {
     func didSelectItem(_ selectedItem: ItemModel?, indexPath: IndexPath)
     func getCellHeight() -> CGFloat
 }

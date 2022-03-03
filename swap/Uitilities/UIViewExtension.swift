@@ -2,7 +2,7 @@
 //  UIViewExtension.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 05/10/21.
+//  Created by Mohammad Arish Khan on 05/10/21.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  swap
 //
-//  Created by Zoeb Husain Sheikh on 02/10/21.
+//  Created by Mohammad Arish Khan on 02/10/21.
 //
 
 import UIKit
