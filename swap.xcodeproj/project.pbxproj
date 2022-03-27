@@ -33,6 +33,8 @@
 		8278F6F72708AC1A005B24F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278F6F62708AC1A005B24F6 /* HomeViewController.swift */; };
 		827FD4D9270CB5C800A9CE0E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */; };
 		82AFF82527130CE4007189B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AFF82427130CE4007189B8 /* ImagePicker.swift */; };
+		A3E3EB9327EB7D8D00C27DF6 /* SwapItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3EB9227EB7D8D00C27DF6 /* SwapItemsModel.swift */; };
+		A3E3EB9527EB8BC500C27DF6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3EB9427EB8BC500C27DF6 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		8278F6F62708AC1A005B24F6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		82AFF82427130CE4007189B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		A3E3EB9227EB7D8D00C27DF6 /* SwapItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapItemsModel.swift; sourceTree = "<group>"; };
+		A3E3EB9427EB8BC500C27DF6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		7243C28F27908639008EF2E5 /* SwapItems */ = {
 			isa = PBXGroup;
 			children = (
+				A3E3EB9127EB7D5F00C27DF6 /* Model */,
 				7243C29127908667008EF2E5 /* Controller */,
 				7243C29027908657008EF2E5 /* Cell */,
 			);
@@ -315,8 +320,17 @@
 				827FD4D8270CB5C800A9CE0E /* UIViewExtension.swift */,
 				82AFF82427130CE4007189B8 /* ImagePicker.swift */,
 				720B9654277387C6003DB4C4 /* ImageStore.swift */,
+				A3E3EB9427EB8BC500C27DF6 /* UIViewControllerExtension.swift */,
 			);
 			path = Uitilities;
+			sourceTree = "<group>";
+		};
+		A3E3EB9127EB7D5F00C27DF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3E3EB9227EB7D8D00C27DF6 /* SwapItemsModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,9 +405,11 @@
 			files = (
 				7243C293279086A9008EF2E5 /* SwapItemsViewController.swift in Sources */,
 				72B8373F27786EF200D9A3BC /* ItemDetailsViewController.swift in Sources */,
+				A3E3EB9527EB8BC500C27DF6 /* UIViewControllerExtension.swift in Sources */,
 				72355078277B4963005B4850 /* UserViewController.swift in Sources */,
 				72623E5F27722C4C00AF7413 /* ItemCollectionViewCell.swift in Sources */,
 				72856C94277F0C39001D9295 /* ItemsTableViewController.swift in Sources */,
+				A3E3EB9327EB7D8D00C27DF6 /* SwapItemsModel.swift in Sources */,
 				827FD4D9270CB5C800A9CE0E /* UIViewExtension.swift in Sources */,
 				825414FA26FB49AA00D19311 /* AppDelegate.swift in Sources */,
 				82472FED27033F1300CB8167 /* UserModel.swift in Sources */,

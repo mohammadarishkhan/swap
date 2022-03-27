@@ -2,7 +2,7 @@
 //  ItemModel.swift
 //  swap
 //
-//  Created by Bigsur on 15/10/21.
+//  Created by Mohammad Arish Khan on 15/10/21.
 //
 
 import Foundation
@@ -15,6 +15,9 @@ struct ItemModel: Codable {
     let description: String
     let imageNameList: [String]
     let email: String                                                            // To store user's reference
+    var range: Int {
+        return "\(price)".count
+    }
 }
 
 extension ItemModel {

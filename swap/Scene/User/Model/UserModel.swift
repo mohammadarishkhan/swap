@@ -15,7 +15,7 @@ struct UserModel: Codable {
 }
 
 extension UserModel {
-    static func readUsers() -> [UserModel]? {                                                  //array of user model [user model]
+    static func readUsers(for email: String? = nil) -> [UserModel]? {                                                  //array of user model [user model]
         // Read/Get Data
         if let data = UserDefaults.standard.data(forKey: "usersKey") {
             do {
@@ -24,8 +24,15 @@ extension UserModel {
 
                 // Decode User
                 let users = try decoder.decode([UserModel].self, from: data)
-                return users
+                guard let email = email else {
+                    return users
+                }
 
+               let filteredUser = users.filter {
+                   $0.authentication.email == email
+                }
+                return filteredUser
+             
             } catch {
                 debugPrint("Unable to Decode UserModel (\(error))")
             }

@@ -2,7 +2,7 @@
 //  ItemDetailsViewController.swift
 //  swap
 //
-//  Created by Bigsur on 26/12/21.
+//  Created by Mohammad Arish Khan on 26/12/21.
 //
 
 import UIKit
@@ -87,11 +87,16 @@ private extension ItemDetailsViewController {
 }
 
 extension ItemDetailsViewController: MyItemsViewControllerProtocol {
-    func didSwapSuccessful() {
+    func didSwapSuccessful(myItemId: String) {
+        let swapItemId = item?.itemId ?? ""
+        let swap = SwapItemsModel(myItemId: myItemId, swapItemId: swapItemId, date: Date(), myEmail: AuthenticationModel.loggedInUserEmail ?? "", swapEmail: item?.email ?? "")
+        if !swap.writeItem() {
+            debugPrint("You have already swap this Item before.")
+        }
         self.navigationController?.popViewController(animated: true)
+   
     }
     
-    
-    
+        
 }
 

@@ -2,7 +2,7 @@
 //  HomeCollectionViewCell.swift
 //  swap
 //
-//  Created by Bigsur on 24/10/21.
+//  Created by Mohammad Arish Khan on 24/10/21.
 //
 
 import UIKit

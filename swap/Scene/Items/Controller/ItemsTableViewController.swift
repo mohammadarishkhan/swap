@@ -2,7 +2,7 @@
 //  ItemsTableViewController.swift
 //  swap
 //
-//  Created by Bigsur on 31/12/21.
+//  Created by Mohammad Arish Khan on 31/12/21.
 //
 
 import UIKit
@@ -21,6 +21,8 @@ class ItemsTableViewController: UIViewController {
     var selectedEmail: String?
     var titleLabelYValue: CGFloat = -10
     var priceLabelYValue: CGFloat = 10
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +35,31 @@ private extension ItemsTableViewController {
     
     func loadItems() {
         items = ItemModel.readItems(for: selectedEmail)
+        if let items = items {
+            let swapItems = SwapItemsModel.readItems()
+            let approvedSwapItems = swapItems?.filter {
+                $0.isapproved == true
+            }
+            
+            var itemList = [ItemModel]()
+            for item in items {
+                var shouldAdd = true
+                if let approvedSwapItems = approvedSwapItems, !approvedSwapItems.isEmpty {
+                    for approvedSwapItem in approvedSwapItems {
+                        if item.itemId == approvedSwapItem.myItemId ||
+                            item.itemId == approvedSwapItem.swapItemId {
+                            shouldAdd = false
+                        }
+                    }
+                }
+                
+                if shouldAdd {
+                    itemList.append(item)
+                }
+            }
+            
+            self.items = itemList
+        }
         tableView.reloadData()
     }
 }

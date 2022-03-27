@@ -22,7 +22,7 @@ class SignupViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)     //for hidding navigation bar in signup screen
     }
     
     func showLoginVC() {
@@ -39,7 +39,7 @@ class SignupViewController: UIViewController {
             showAlert("Enter 10 digit phone number")
             return false
         } else if isValidEmail(emailTextField.text ?? "") == false {
-            showAlert("Email must be valid")
+            showAlert("Write Valid Email")
             return false
         } else if passwordTextField.text!.count < 6 {
             showAlert("password must be greater than 6 character")
@@ -96,7 +96,8 @@ class SignupViewController: UIViewController {
                 userModel.writeUser()
                 authenticationModel.didAuthSuccessful()
                 
-                if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier") {
+                if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier")
+                {
                     self.navigationController?.viewControllers = [homeViewController]
                 }
                 

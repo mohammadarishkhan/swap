@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  swap
 //
-//  Created by Mohammad Arish Khanon 24/09/21.
+//  Created by Mohammad Arish Khan on 24/09/21.
 //
 
 import UIKit
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     func showLoginAlert() {
-        let vc = UIAlertController(title: "Error", message: "email and password is incorrect!" , preferredStyle: .alert)
+        let vc = UIAlertController(title: "Error", message: "email or password is incorrect!" , preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         vc.addAction(action)
         self.present(vc, animated: true, completion: nil)

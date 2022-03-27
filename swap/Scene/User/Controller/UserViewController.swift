@@ -2,7 +2,7 @@
 //  UserViewController.swift
 //  swap
 //
-//  Created by Bigsur on 28/12/21.
+//  Created by Mohammad Arish Khan on 28/12/21.
 //
 
 import UIKit
@@ -20,6 +20,7 @@ class UserViewController: UIViewController {
     lazy var user: UserModel = getUser()!
     var photoStored: UIImage?
     var imagePicker: ImagePicker!
+    var swapItemsViewController: SwapItemsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,9 @@ class UserViewController: UIViewController {
             vc.priceLabelYValue = 17
             vc.selectedEmail = AuthenticationModel.loggedInUserEmail
 
+        } else if let vc = segue.destination as? SwapItemsViewController {
+            swapItemsViewController = vc
+            swapItemsViewController?.isIncominRequest = false
         }
         super.prepare(for: segue, sender: sender)
     }
@@ -91,14 +95,26 @@ class UserViewController: UIViewController {
             swapItemsContainerView.isHidden = true
         }
         else if sender.selectedSegmentIndex == 1 {
+            swapItemsViewController?.isSwappedApproved = false
+            swapItemsViewController?.isIncominRequest = true
+            swapItemsViewController?.loadItems()
             myItemsContainerView.isHidden = true
             swapItemsContainerView.isHidden = false
             
         }
         else if sender.selectedSegmentIndex == 2 {
+            swapItemsViewController?.isSwappedApproved = false
+            swapItemsViewController?.isIncominRequest = false
+            swapItemsViewController?.loadItems()
             myItemsContainerView.isHidden = true
             swapItemsContainerView.isHidden = false
-            
+        }
+        else if sender.selectedSegmentIndex == 3 {
+            swapItemsViewController?.isSwappedApproved = true
+            swapItemsViewController?.isIncominRequest = false
+            swapItemsViewController?.loadApprovedItems()
+            myItemsContainerView.isHidden = true
+            swapItemsContainerView.isHidden = false
         }
     }
     

@@ -2,12 +2,12 @@
 //  ItemsViewController.swift
 //  swap
 //
-//  Created by Bigsur on 21/12/21.
+//  Created by Mohammad Arish Khan on 21/12/21.
 //
 
 import UIKit
 
-protocol ItemsViewControllerProtocol: class {
+protocol ItemsViewControllerProtocol: AnyObject {
     func didSelectedItem(item: ItemModel)
 }
 
@@ -41,11 +41,40 @@ class ItemsViewController: UIViewController {
 private extension ItemsViewController {
     func loadItems() {
         items = ItemModel.readItems()
-        if let category = selectedCategory, let items = items {
-            self.items = items.filter {
-                $0.category == category
+        if let items = items {
+            
+            let swapItems = SwapItemsModel.readItems()
+            let approvedSwapItems = swapItems?.filter {
+                $0.isapproved == true
+            }
+            
+            var itemList = [ItemModel]()
+            for item in items {
+                var shouldAdd = true
+                if let approvedSwapItems = approvedSwapItems, !approvedSwapItems.isEmpty {
+                    for approvedSwapItem in approvedSwapItems {
+                        if item.itemId == approvedSwapItem.myItemId ||
+                            item.itemId == approvedSwapItem.swapItemId {
+                            shouldAdd = false
+                        }
+                    }
+                }
+                
+                if shouldAdd {
+                    itemList.append(item)
+                }
+            }
+            
+            self.items = itemList
+            
+            if let category = selectedCategory {
+                self.items = items.filter {
+                    $0.category == category
+                }
             }
         }
+        
+        
         collectionView.reloadData()
     }
 }

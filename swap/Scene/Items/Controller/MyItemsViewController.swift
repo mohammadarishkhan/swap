@@ -2,13 +2,13 @@
 //  MyItemsViewController.swift
 //  swap
 //
-//  Created by Bigsur on 12/01/22.
+//  Created by Mohammad Arish Khan on 12/01/22.
 //
 
 import UIKit
 
-protocol MyItemsViewControllerProtocol: class {
-    func didSwapSuccessful()
+protocol MyItemsViewControllerProtocol: AnyObject {
+    func didSwapSuccessful(myItemId: String)
     
 }
 
@@ -28,6 +28,7 @@ class MyItemsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ItemsTableViewController {
+          vc.selectedEmail = selectedEmail
             vc.delegate = self
         }
         super.prepare(for: segue, sender: sender)
@@ -55,12 +56,19 @@ extension MyItemsViewController: ItemsTableViewControllerProtocol {
     func didSelectItem(_ selectedItem: ItemModel?, indexPath: IndexPath) {
         let myItem = selectedItem?.title ?? ""
         let otherItem = swapItem?.title ?? ""
+        guard selectedItem?.range == swapItem?.range else {
+            showAlert("Try to swap with same price range")
+            return
+        }
         let vc = UIAlertController(title: "Swap", message: myItem + " with " + otherItem  , preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+            if let selectedItem = selectedItem {
+                self.delegate?.didSwapSuccessful(myItemId: selectedItem.itemId)
+                self.dismiss(animated: false)
+            }
             
-            self.delegate?.didSwapSuccessful()
-            self.dismiss(animated: false)
+           
         }
         
         vc.addAction(okAction)

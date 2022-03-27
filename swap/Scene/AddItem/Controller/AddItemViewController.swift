@@ -43,13 +43,6 @@ class AddItemViewController: UIViewController {
         return true
     }
     
-    private func showAlert(title: String? = "Error", _ message: String) {
-        let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        vc.addAction(action)
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     //MARK: - Actions
     
     @IBAction private func publishButtonAction() {
@@ -58,7 +51,7 @@ class AddItemViewController: UIViewController {
                 
                 var imageNameList = [String]()
                 for image in photosStored {
-                    let name = UUID().uuidString
+                    let name = UUID().uuidString                   //provide a unique name 
                     debugPrint("UUID: " + name)
                     do {
                         try ImageStore.store(image: image, name: name)
@@ -100,17 +93,17 @@ class AddItemViewController: UIViewController {
         let action5 = UIAlertAction(title: "Others", style: .default) {_ in
             self.categoryButton.setTitle("Others", for: UIControl.State.normal)
         }
+      
         vc.addAction(action)
         vc.addAction(action1)
         vc.addAction(action2)
         vc.addAction(action3)
         vc.addAction(action4)
         vc.addAction(action5)
-        
         self.present(vc, animated: true, completion: nil)
     }
     
-    @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {     
+    @IBAction func addPhotosTapped(_ sender: UITapGestureRecognizer) {
         
         guard photosStored.count != 3 else {
             showAlert("Maximum 3 images are allowed")
