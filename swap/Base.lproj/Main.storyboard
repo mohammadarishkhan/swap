@@ -10,6 +10,67 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Phone Verification View Controller-->
+        <scene sceneID="vya-yy-BId">
+            <objects>
+                <viewController id="9n1-OM-I8C" customClass="PhoneVerificationViewController" customModule="swap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8PH-Fq-4l8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter OTP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lO-eK-7sQ">
+                                <rect key="frame" x="30" y="134" width="131" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="USM-aS-Sa6">
+                                <rect key="frame" x="30" y="218" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsx-4T-deF" userLabel="Send OTP">
+                                <rect key="frame" x="50" y="352" width="314" height="48"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="VOF-wt-gkH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirmButtonAction:" destination="9n1-OM-I8C" eventType="touchUpInside" id="3Qn-UY-XqC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hup-HP-Vpn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2lO-eK-7sQ" firstAttribute="leading" secondItem="hup-HP-Vpn" secondAttribute="leading" constant="30" id="8YC-mP-Kag"/>
+                            <constraint firstItem="hup-HP-Vpn" firstAttribute="trailing" secondItem="USM-aS-Sa6" secondAttribute="trailing" constant="30" id="EcN-WW-hEc"/>
+                            <constraint firstItem="Lsx-4T-deF" firstAttribute="leading" secondItem="hup-HP-Vpn" secondAttribute="leading" constant="50" id="MlR-tT-nBU"/>
+                            <constraint firstItem="Lsx-4T-deF" firstAttribute="top" secondItem="USM-aS-Sa6" secondAttribute="bottom" constant="100" id="VPE-eC-WxH"/>
+                            <constraint firstItem="hup-HP-Vpn" firstAttribute="trailing" secondItem="Lsx-4T-deF" secondAttribute="trailing" constant="50" id="WNU-B8-hMe"/>
+                            <constraint firstItem="USM-aS-Sa6" firstAttribute="leading" secondItem="hup-HP-Vpn" secondAttribute="leading" constant="30" id="aRH-xl-F8k"/>
+                            <constraint firstItem="2lO-eK-7sQ" firstAttribute="top" secondItem="hup-HP-Vpn" secondAttribute="top" constant="90" id="lJB-rr-uae"/>
+                            <constraint firstItem="USM-aS-Sa6" firstAttribute="top" secondItem="2lO-eK-7sQ" secondAttribute="bottom" constant="50" id="ms8-o8-LnK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mvF-yJ-rlt"/>
+                    <connections>
+                        <outlet property="codeTextField" destination="USM-aS-Sa6" id="81W-5P-KuP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXB-5o-0f7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="-871"/>
+        </scene>
         <!--Signup View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -120,6 +181,7 @@
                         <outlet property="nameTextField" destination="QDk-z0-UKB" id="5hw-oc-i2e"/>
                         <outlet property="passwordTextField" destination="1pn-NJ-oUB" id="ktx-zg-1fC"/>
                         <outlet property="phoneTextField" destination="wJB-Fn-y26" id="LIN-pA-64X"/>
+                        <segue destination="9n1-OM-I8C" kind="show" identifier="PhoneVerificationViewControllerIdentifier" id="8NW-Zt-5V6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

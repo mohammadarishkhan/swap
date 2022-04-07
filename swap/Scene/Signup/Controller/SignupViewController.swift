@@ -25,6 +25,13 @@ class SignupViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)     //for hidding navigation bar in signup screen
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PhoneVerificationViewController {
+            vc.delegate = self
+            vc.phoneNumber = phoneTextField.text
+        }
+    }
+    
     func showLoginVC() {
         performSegue(withIdentifier: "LoginViewControllerIdentifier", sender: self)
     }
@@ -87,21 +94,27 @@ class SignupViewController: UIViewController {
     @IBAction func signupButtonAction() {
         if performValidation() && isUserExist() == false {
             debugPrint("This form is valid!")
-            if let name: String = nameTextField.text, let phone: String = phoneTextField.text, let phoneNumber =  Int(phone), let email = emailTextField.text, let password = passwordTextField.text {
-                
-                let authenticationModel = AuthenticationModel(email: email, password: password)
-                
-                let userModel = UserModel(name: name, phone: phoneNumber, authentication: authenticationModel)
-                
-                userModel.writeUser()
-                authenticationModel.didAuthSuccessful()
-                
-                if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier")
-                {
-                    self.navigationController?.viewControllers = [homeViewController]
-                }
-                
+            performSegue(withIdentifier: "PhoneVerificationViewControllerIdentifier", sender: self)
+        }
+    }
+}
+
+extension SignupViewController: PhoneVerificationProtocol {
+    func didOTPVerified() {
+        if let name: String = nameTextField.text, let phone: String = phoneTextField.text, let phoneNumber =  Int(phone), let email = emailTextField.text, let password = passwordTextField.text {
+            
+            let authenticationModel = AuthenticationModel(email: email, password: password)
+            
+            let userModel = UserModel(name: name, phone: phoneNumber, authentication: authenticationModel)
+            
+            userModel.writeUser()
+            authenticationModel.didAuthSuccessful()
+            
+            if let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerIdentifier")
+            {
+                self.navigationController?.viewControllers = [homeViewController]
             }
+            
         }
     }
 }
